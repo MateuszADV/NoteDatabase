@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>
+    <link rel="stylesheet" th:href="@{css/test.css}" type="text/css">
+</head>
+<body>
+<div id="heder">
+    <div id="logo">
+        <img id="imageLogo"  src="images/logo.png"></img>
+    </div>
+    <div id="logotext">
+        <center>
+            <h1>TEST</h1>
+        </center>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div>
+    <div>
+        <p> tekst na sronie</p>
+        <center>
+            <table id="tabela">
+                <tr>
+                    <td>wirrsz: 1 kolumna: 1</td>
+                    <td>Wiersz: 1 kolumna: 2</td>
+                </tr>
+                <tr>
+                    <td>wirrsz: 2 kolumna: 1</td>
+                    <td>wirrsz: 2 kolumna: 2</td>
+                </tr>
+                <tr>
+                    <td>wirrsz: 3 kolumna: 1</td>
+                    <td>wirrsz: 2 kolumna: 2</td>
+                </tr>
+            </table>
+        </center>
+    </div>
+    <div>
+        <form action="#" name="obraz">
+            <p><input type="file"  accept="image/jpeg" placeholder="wybierz plik"></p>
+        </form>
+    </div>
+    <div style="float: left; padding-right:60px">
+        <script>
+            document.write("a: "+(42>20)+"<br>")
+            document.write("b: "+(42<12)+"<br>")
+            document.write("c: "+(44==87)+"<br>")
+            document.write("d: "+(20>1)+"<br>")
+            document.write("4+8="+(4+8)+"<br>")
+        </script>
+    </div>
+    <div style="float: left; padding-right: 60px">
+        <script>
+            myname = "Mateusz"
+            myage = 37
+            document.write("Wartość liczbowa: "+42+"<br>")
+            document.write("Wartość łańcuchowa: "+"HEJ"+"<br>")
+            document.write("Literał stały: "+true+"<br>")
+            document.write("Zmienna łańcuchowa: "+myname+"<br>")
+            document.write("Zmienna liczbowa: "+myage+"<br>")
+         </script>
+    </div>
+    <div style="float: left; padding-right: 60px " >
+        <script>
+            day_number = 300;
+            day_to_new_year = 366 - day_number;
+            if(day_to_new_year>100) document.write("do nowego roku jeszcze sporo dni")
+            else document.write("do nowego roku jeszcze kilka dni: "+day_to_new_year)
+        </script>
+    </div>
+    <div style="clear: both">
+
+    </div>
+
+</div>
+
+</body>
+</html>

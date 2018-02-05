@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BANKNOTY</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <div class="logoObraek">
+            <span>
+            <img class="obrazek" th:src="#{logo}"/>
+            </span>
+        </div>
+        <div class="logoNapis">
+            <p></p><h1 th:text="#{heder}"></h1></p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+    <div class="menu">
+        <div><h1>MENU</h1></div>
+        <nav>
+            <ul class="menu1">
+                <li>
+                    <p><a href="#">HOME</a></p>
+                </li>
+                <li>
+                    <p><a href="customer">KLIENCI</a></p>
+                </li>
+                <li>
+                    <p><a href="note">BANKNOTY</a></p>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="content">
+        <h1>TRESC</h1>
+        <a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta magna tortor,
+            in condimentum turpis ornare ac. Suspendisse sagittis nibh leo, quis consequat
+            augue fringilla in. Ut molestie, odio et tempor accumsan, arcu libero mollis erat,
+            ut tempor enim elit tempor libero. Sed tristique posuere ligula. Nullam tristique
+            semper risus, eget interdum metus vestibulum vel. Integer rutrum dictum nibh.
+            Suspendisse in lobortis purus, a eleifend ipsum. Nulla gravida risus eget est gravida pulvinar.
+            Etiam consequat dignissim magna in ornare. Nulla tempus ex eros, ut maximus leo tempor bibendum.
+            Mauris cursus ex eget metus rhoncus consectetur. </a>
+        <br/>
+        <br/>
+        <p><img class="brunei" src="images/bills/Brunei/Brunei_1_Ringgit_10a.jpg"></p>
+
+        
+    </div>
+
+    <div class="footer">
+        <h1 th:text="#{footer}"></h1>
+
+    </div>
+
+
+
+</div>
+</body>
+</html>

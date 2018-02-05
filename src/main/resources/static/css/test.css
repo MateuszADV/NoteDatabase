@@ -1,0 +1,44 @@
+body
+{
+    background-color: lightgray;
+}
+#heder
+{
+    background-color: #53d79e;
+    padding: 10px;
+}
+h1
+{
+    font-size: 250%;
+}
+#logo
+{
+    background-color: black;
+    width: 50%;
+    float: left;
+}
+#logotext
+{
+    background-color: chocolate;
+    width: 50%;
+    float: left;
+}
+
+#imageLogo
+{
+    width: 20%;
+    height: 20%;
+    border-radius: 90% 90% 90% 90%;
+}
+
+#tabela, tr, td
+{
+    border:1px solid black;
+    border-spacing:0px;
+    padding: 0px;
+    background-color: #53d79e;
+}
+td
+{
+    padding: 5px;
+}

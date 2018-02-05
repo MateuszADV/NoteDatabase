@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Customer</title>
+    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/showNote.css}" type="text/css" />
+</head>
+<body>
+<div>
+    <div class="logo">
+        <div class="logoObraek">
+            <span>
+            <img class="obrazek" th:src="#{logo}"/>
+            </span>
+        </div>
+        <div class="logoNapis">
+            <p></p><h1 th:text="#{heder}"></h1></p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+            <h1 style="color: #53d79e; padding: 20px">Klienci</h1>
+
+            <div id="viewTable" style="min-height: 620px">
+               <!-- <div id="operacje">
+                    <center>
+                    <div id="search">
+                        <a href="note.html">Dodaj nowy banknot </a>
+
+                        <form th:action="@{/shownote}" method="post" >
+                            <a>Szukaj Państwo</a><br/>
+                            <a><input type="text" th:name="country" placeholder="country"></a><br/>
+                            <a>Podaj Id rekordu który chcesz usunąć </a><br/>
+                            <a><input type="text" th:name="deleteId" placeholder="Id"></a><br/>
+                            <p><input type="submit" value="Szukaj/usuń"></p>
+                        </form>
+                    </div>
+                    <div id="delete">
+                        <p><h1>Informacje</h1></p>
+                        <p th:text="${idId}"></p>
+                        <p th:text="${country}+' - wyszukanych elementów: '+${countCountry}"></p>
+                        <p th:text="${brak}"></p>
+
+                    </div>
+                    </center>
+                    <div style="clear: both"></div>
+                </div>-->
+
+                <table id="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+                    <tr id="wiersz">
+                        <th>Id</th>
+                        <th>Numer Klienta</th>
+                        <th>Imie</th>
+                        <th>Nazwisko</th>
+                        <th>Kod pocztowy</th>
+                        <th>Miejscowość</th>
+                        <th>Ulica</th>
+                        <th>Numer mieszkoania/lokalu</th>
+                        <th>Nick</th>
+                        <th>Telefon</th>
+                        <th>E-mail</th>
+                        <th>Notatki</th>
+                    </tr>
+                    <th:block th:each="customer : ${customerList}">
+                        <tr>
+                            <td th:text="${customer.id}"></td>
+                            <td th:text="${customer.numberCustomer}"></td>
+                            <td th:text="${customer.name}"></td>
+                            <td th:text="${customer.lastname}"></td>
+                            <td th:text="${customer.zipCode}"></td>
+                            <td th:text="${customer.city}"></td>
+                            <td th:text="${customer.street}"></td>
+                            <td th:text="${customer.numberStreet}"></td>
+                            <td th:text="${customer.nick}"></td>
+                            <td th:text="${customer.phone}"></td>
+                            <td th:text="${customer.email}"></td>
+                            <td th:text="${customer.comments}"></td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+    </CENTER>
+
+    <div class="footer">
+        <h1>STOPKA</h1>
+
+    </div>
+
+
+
+</div>
+</body>
+</html>

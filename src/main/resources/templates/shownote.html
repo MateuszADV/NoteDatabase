@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show note</title>
+    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/showNote.css}" type="text/css" />
+
+</head>
+<body>
+<div>
+    <div class="logo">
+        <div class="logoObraek">
+            <span>
+            <img class="obrazek" th:src="#{logo}"/>
+            </span>
+        </div>
+        <div class="logoNapis">
+            <p></p><h1 th:text="#{heder}"></h1></p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+            <h1 style="color: #53d79e; padding: 20px; text-align: center">Tabela z banknotami</h1>
+
+            <div id="viewTable" style="min-height: 620px">
+                <div id="operacje">
+                    <div id="search">
+                        <a href="note.html">Dodaj nowy banknot </a>
+
+                        <form th:action="@{/shownote}" method="post" >
+                            <a>Szukaj Państwo</a><br/>
+                            <a><input type="text" th:name="country" placeholder="country"></a><br/>
+                            <p><input type="submit" value="Szukaj"></p>
+                        </form>
+                    </div>
+                    <div id="info">
+                        <p><h1>Informacje</h1></p>
+                        <p th:text="${idId}"></p>
+                        <p th:text="${country}+' - wyszukanych elementów: '+${countCountry}"></p>
+                        <p th:text="${brak}"></p>
+
+                    </div>
+                    <div id="delete">
+                        <form th:action="@{/shownote}" method="post" >
+                            <a>Podaj Id rekordu który chcesz usunąć </a><br/>
+                            <a><input type="text" th:name="deleteId" placeholder="Id"></a><br/>
+                            <p><input type="submit" value="usuń"></p>
+                        </form>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                </center>
+                <table id="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+                    <tr id="wiersz">
+                        <th>Id</th>
+                        <th>Numerw katalogu</th>
+                        <th>Państwo</th>
+                        <th>KOD</th>
+                        <th>Waluta</th>
+                        <th>Nominał</th>
+                        <th>Data</th>
+                        <th>Kupno</th>
+                        <th>Sprzeaż</th>
+                        <th>Ilość</th>
+                        <th>Stan banknotu</th>
+                        <th>Opis</th>
+                        <th>Avers</th>
+                        <th>Revers</th>
+                    </tr>
+                    <th:block th:each="note : ${lista}">
+                        <tr>
+                            <td th:text="${note.id}"></td>
+                            <td th:text="${note.numberCatalog}"></td>
+                            <td th:text="${note.country}"></td>
+                            <td th:text="${note.cod}"></td>
+                            <td th:text="${note.currency}"></td>
+                            <td th:text="${note.denomination}"></td>
+                            <td th:text="${note.dataNote}"></td>
+                            <td th:text="${note.priceBuy}+'zł'"></td>
+                            <td th:text="${note.priceSell}+'zł'"></td>
+                            <td th:text="${note.quantity} "></td>
+                            <td th:text="${note.quality}"></td>
+                            <td th:text="${note.notes}"></td>
+                            <td style="width: 150px" ><a target="_blank" th:href="${note.PathNoteSizeA}"><img class="note" th:src="${note.PathNoteSizeA}"/></a></td>
+                            <td style="width: 150px" ><a target="_blank" th:href="${note.PathNoteSizeB}"><img class="note" th:src="${note.PathNoteSizeB}"/></a></td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+    </CENTER>
+
+    <div class="footer">
+        <h1 th:text="#{footer}"></h1>
+
+    </div>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Klienci</title>
+    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <div class="logoObraek">
+            <span>
+            <img class="obrazek" th:src="#{logo}"/>
+            </span>
+        </div>
+        <div class="logoNapis">
+            <p></p><h1 th:text="#{heder}"></h1></p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div class="menu">
+        <div>
+            <p>MENU</p>
+        </div>
+        <nav>
+            <ul class="menu1">
+                <li>
+                    <p><a href="/">HOME</a></p>
+                </li>
+                <li>
+                    <p><a href="#">KLIENCI</a></p>
+                </li>
+                <li>
+                    <p><a href="note">BANKNOTY</a></p>
+                </li>
+                <li>
+                    <p><a href="shownote">Show Note</a></p>
+                </li>
+                <li>
+                    <p><a href="showcustomer">Show customer</a></p>
+                </li>
+                <li>
+                    <p><a href="/test">TEST2</a></p>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="content">
+
+        <h2><p th:text="${error}"></p></h2>
+
+        <form th:action="@{/customer}" method="post" th:object="${customerForm}">
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>Dane</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Numer Klienta</td>
+                    <td><a><input class="input" type="text"  th:field="*{numberCustomer}" th:placeholder="${nextNumberCustomer}" readonly></a></td>
+                </tr>
+                <tr>
+                    <td>Imię</td>
+                    <td><input class="input" type="text" th:field="*{name}" ></td>
+                </tr>
+                <tr>
+                    <td>Nazwisko</td>
+                    <td><input class="input" type="text" th:field="*{lastname}"></td>
+                </tr>
+                <tr>
+                    <td>Kod pocztowy</td>
+                    <td> <input class="input" type="text" th:field="*{zipCode}"></td>
+                </tr>
+                <tr>
+                    <td>Miejscowość</td>
+                    <td><input class="input" type="text" th:field="*{city}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ulica</td>
+                    <td><input class="input" type="text" th:field="*{street}"></td>
+                </tr>
+                <tr>
+                    <td>Nr budynku/lokalu</td>
+                    <td><input class="input" type="text" th:field="*{numberStreet}"></td>
+                </tr>
+                <tr>
+                    <td>Nick</td>
+                    <td><input class="input" type="text" th:field="*{nick}"></td>
+                </tr>
+                <tr>
+                    <td>Telefon</td>
+                    <td><input class="input" type="text" th:field="*{phone}"></td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td><input class="input" type="text" th:field="*{email}"></td>
+                </tr>
+                <tr>
+                    <td>Notatki</td>
+                    <td><textarea  type="text" th:field="*{comments}"></textarea></td>
+                    <td></td>
+                </tr>
+                <tr>
+
+            </table>
+
+            <p> <input type="submit" value="Dodaj"></p>
+        </form>
+
+    </div>
+
+    <div id="viewTable">
+        <table id="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+            <tr id="wiersz">
+                <th>Numer Klienta</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Kod pocztowy</th>
+                <th>Miejscowość</th>
+                <th>Ulica</th>
+                <th>Numer miesz./budynku</th>
+                <th>Nick</th>
+                <th>Telefon</th>
+                <th>E-mail</th>
+                <th>Notatki</th>
+            </tr>
+            <tr th:each="customer : ${customerList}">
+               <td th:text="${customer.numberCustomer}"></td>
+               <td th:text="${customer.name}"></td>
+               <td th:text="${customer.lastname}"></td>
+               <td th:text="${customer.zipCode}"></td>
+               <td th:text="${customer.city}"></td>
+               <td th:text="${customer.street}"></td>
+               <td th:text="${customer.numberStreet}"></td>
+               <td th:text="${customer.nick}"></td>
+               <td th:text="${customer.phone}"></td>
+               <td th:text="${customer.email}"></td>
+               <td th:text="${customer.comments}"></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div class="footer">
+        <h1>STOPKA</h1>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

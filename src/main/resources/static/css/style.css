@@ -1,0 +1,93 @@
+body
+{
+	background: url("images/onedollar.jpg") top center;
+}
+
+.container
+{
+    width:800px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#53d79e
+}
+
+.logo
+{
+    height: 100px;
+    background-color:black;
+    color:white;
+    padding:15px;
+}
+
+.logoObraek
+{
+    float: left;
+    width: 25%;
+    border-right: 1px solid white;
+}
+
+.logoNapis
+{
+    float: left;
+    width: 74%;
+    text-align: center;
+    border-right: 1px solid white;
+}
+
+.obrazek
+{
+    width:40%;
+    height:40%;
+    border-radius: 90px 90px 90px 90px;
+}
+
+
+.brunei
+{
+    width:30%;
+    height:30%;
+    padding:20px;
+}
+.menu
+{
+     float:left;
+     background-color:gray;
+     width:120px;
+     min-height:660px;
+     max-height: 2000px;
+     padding:20px;
+}
+
+.content
+{
+     float:left;
+     padding:20px;
+     width:600px;
+     min-height:620px;
+}
+
+#viewTable
+{
+    clear:both;
+    padding:40px;
+    background-color:#D9D7D7
+}
+.footer
+{
+    clear:both;
+     background-color:black;
+     color:white;
+     text-align:center;
+     padding:5px;
+}
+
+.menu1 a
+{
+    color:white;
+    text-decoration:none;
+}
+.menu1 a:hover
+{
+    color:blue;
+
+}

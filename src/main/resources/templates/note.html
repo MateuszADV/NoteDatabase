@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NOTE</title>
+    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <div class="logoObraek">
+            <span>
+            <img class="obrazek" th:src="#{logo}"/>
+            </span>
+        </div>
+        <div class="logoNapis">
+            <p></p><h1 th:text="#{heder}"></h1></p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div class="menu">
+        <div>
+            <p>MENU</p>
+        </div>
+        <nav>
+            <ul class="menu1">
+                <li>
+                    <p><a href="/">HOME</a></p>
+                </li>
+                <li>
+                    <p><a href="customer">KLIENCI</a></p>
+                </li>
+                <li>
+                    <p><a href="note">BANKNOTY</a></p>
+                </li>
+                <li>
+                    <p><a href="shownote">Show Note</a></p>
+                </li>
+                <li>
+                    <p><a href="/test">TEST2</a></p>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="content">
+
+        <h2><p th:text="${error}"></p></h2>
+
+        <form th:action="@{/note}" method="post" th:object="${noteForm}">
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>Wartość</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Numer Katalogu</td>
+                    <td><a><input class="input" type="text" th:field="*{numberCatalog}" th:placeholder="${nextNumberCatalog}"  readonly></a></td>
+                    <td th:if="${#fields.hasErrors('numberCatalog')}" th:errors="*{numberCatalog}" style="color: red"></td>
+                </tr>
+                <tr>
+                    <td>Kraj</td>
+                    <td><input class="input" type="text" th:field="*{country}"></td>
+                    <td th:if="${#fields.hasErrors('country')}" th:errors="*{country}" style="color: red"></td>
+                </tr>
+                <tr>
+                    <td>KOD</td>
+                    <td><input class="input" type="text" th:field="*{cod}"></td>
+                    <td th:if="@{#fields.hasErrors('cod')}" th:errors="*{cod}" style="color: red"></td>
+                </tr>
+                <tr>
+                    <td>Waluta</td>
+                    <td> <input class="input" type="text" th:field="*{currency}"></td>
+                    <td th:if="@{#fields.hasErrors('currency')}" th:errors="*{currency}"></td>
+                </tr>
+                <tr>
+                    <td>Nominał</td>
+                    <td><input class="input" type="text" th:field="*{denomination}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td><input class="input" type="text" th:field="*{dataNote}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Kupno</td>
+                    <td><input class="input" type="text" th:field="*{priceBuy}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Sprzedaż</td>
+                    <td><input class="input" type="text" th:field="*{priceSell}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ilość banknotów</td>
+                    <td><input class="input" type="number" th:field="*{quantity}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Stan Banknotu</td>
+                    <td><input class="input" type="text" th:field="*{quality}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Opis Banknotu</td>
+                    <td><textarea  type="text" th:field="*{notes}"></textarea></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ścieżka A</td>
+                    <td><input class="input" type="text" th:field="*{pathNoteSizeA}" style="width:300px"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ścieżka B</td>
+                    <td><input class="input" type="text" th:field="*{pathNoteSizeB}" style="width:300px"></td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <p> <input type="submit" value="Dodaj"></p>
+        </form>
+        <p><img class="brunei" th:src="${pathA}">    <img class="brunei" th:src="${pathB}"> </p>
+
+    </div>
+
+    <div id="viewTable">
+        <table id="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+            <tr id="wiersz">
+                <th>Numer Katalogu</th>
+                <th>Państwo</th>
+                <th>KOD</th>
+                <th>Waluta</th>
+                <th>Nominał</th>
+                <th>Data</th>
+                <th>Kupno</th>
+                <th>Sprzeaż</th>
+                <th>Ilość</th>
+                <th>Stan banknotu</th>
+                <th>Opis</th>
+                <th>Ścieżka A</th>
+                <th>Ścieżka B</th>
+            </tr>
+            <tr th:each="note : ${notelist}">
+                <td th:text="${note.numberCatalog}"></td>
+                <td th:text="${note.country}"></td>
+                <td th:text="${note.cod}"></td>
+                <td th:text="${note.currency}"></td>
+                <td th:text="${note.denomination}"></td>
+                <td th:text="${note.dataNote}"></td>
+                <td th:text="${note.priceBuy}+'zł'"></td>
+                <td th:text="${note.priceSell}+'zł'"></td>
+                <td th:text="${note.quantity}"></td>
+                <td th:text="${note.quality}"></td>
+                <td th:text="${note.notes}"></td>
+                <td th:text="${note.pathNoteSizeA}"></td>
+                <td th:text="${note.pathNoteSizeB}"></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div class="footer">
+        <h1>STOPKA</h1>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
