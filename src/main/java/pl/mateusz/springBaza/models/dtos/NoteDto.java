@@ -19,6 +19,4 @@ public class NoteDto {
     private int quantity;
     private String quality;
     private String notes;
-    private String pathNoteSizeA;
-    private String pathNoteSizeB;
 }
