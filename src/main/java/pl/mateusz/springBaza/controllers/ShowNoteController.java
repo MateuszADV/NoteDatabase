@@ -35,6 +35,7 @@ public class ShowNoteController {
                                Model model){
 
         noteLista = noteRepository.findByCountry(someCountry);
+       // noteLista = noteRepository.findAllByCountryContains(someCountry);
         int countSherchCountry = noteRepository.countAllByCountry(someCountry); //Zwrca liczbe wyszukanych elementów w bazie
 
         model.addAttribute("country",someCountry);
@@ -51,7 +52,7 @@ public class ShowNoteController {
             //return "redirect:/shownote";
         }
             try{
-                noteRepository.delete(Integer.parseInt(someDeleteId));
+                noteRepository.deleteById(Integer.parseInt(someDeleteId));
                 model.addAttribute("idId","Podany rekord został pomyślnie usunięty: "+someDeleteId);
 
                 noteLista = noteRepository.findAllBy();

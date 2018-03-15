@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class NoteModel implements Comparable<NoteModel>{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String numberCatalog;
     private String country;
     private String cod;

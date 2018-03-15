@@ -23,7 +23,7 @@ public class RestControler {
 
     @RequestMapping(value = "/rest/shownote/{id}", method = RequestMethod.DELETE, produces = "application/json")
     public ResponseEntity banknoty(@PathVariable("id") int someId){
-        noteRepository.delete(someId);
+        noteRepository.deleteById(someId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
