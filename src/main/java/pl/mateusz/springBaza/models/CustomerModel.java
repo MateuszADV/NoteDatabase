@@ -1,13 +1,16 @@
 package pl.mateusz.springBaza.models;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.mateusz.springBaza.models.forms.CustomerForm;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "customers")
 public class CustomerModel {
