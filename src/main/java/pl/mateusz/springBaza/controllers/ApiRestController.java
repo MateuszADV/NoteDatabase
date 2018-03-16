@@ -37,13 +37,13 @@ public class ApiRestController {
 
 
         ItemNoteModel itemNoteModel = new ItemNoteModel();
-        itemNoteModel.setCod("PLN");
-        itemNoteModel.setCountry("Polska");
-        itemNoteModel.setCurency("10 zlotych");
-        itemNoteModel.setDescryption("Polski banknot");
+        itemNoteModel.setCod("DEM");
+        itemNoteModel.setCountry("Niemcy");
+        itemNoteModel.setCurency("20 Marek");
+        itemNoteModel.setDescryption("Niemiecki banknot");
         itemNoteModel.setQuality("UNC");
-        itemNoteModel.setQuantity(2);
-        itemNoteModel.setPriceSell(25.0);
+        itemNoteModel.setQuantity(22);
+        itemNoteModel.setPriceSell(44.50);
         //itemNoteModel.setOrderModel(orderModel);
 
         itemNoteRepository.save(itemNoteModel);
