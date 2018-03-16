@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "orderItem")
+@Table(name = "order_customer")
 public class OrderModel {
 
     @Id
@@ -23,14 +23,15 @@ public class OrderModel {
     private Date added = new Date();
 
     @ManyToOne
+    @JoinColumn(name = "customer_Id")
     private CustomerModel customerModel;
 
     @OneToMany
     List<ItemNoteModel> itemOrder = new ArrayList<>();
 
 
-    public void addItemOrder(ItemNoteModel itemNoteModel){
+  /*  public void addItemOrder(ItemNoteModel itemNoteModel){
         itemOrder.add(itemNoteModel);
         itemNoteModel.setOrderModel(this);
-    }
+    }*/
 }

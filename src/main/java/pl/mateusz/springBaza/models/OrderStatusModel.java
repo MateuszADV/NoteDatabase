@@ -11,7 +11,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "oredestatus")
+@Table(name = "orede_status")
 public class OrderStatusModel {
 
     @Id
