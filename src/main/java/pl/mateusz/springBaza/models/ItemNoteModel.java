@@ -30,6 +30,4 @@ public class ItemNoteModel {
     @JoinColumn(name = "order_id")
     private OrderModel orderModel;
 
-
-
 }

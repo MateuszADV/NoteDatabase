@@ -44,22 +44,22 @@ public class ApiRestController {
         itemNoteModel.setQuality("UNC");
         itemNoteModel.setQuantity(2);
         itemNoteModel.setPriceSell(25.0);
-        itemNoteModel.setOrderModel(orderModel);
+        //itemNoteModel.setOrderModel(orderModel);
 
         itemNoteRepository.save(itemNoteModel);
+
         List<ItemNoteModel>itemNoteModelsList = new ArrayList<>();
         itemNoteModelsList.add(itemNoteModel);
 
-      // orderModel.addItemOrder(itemNoteModel);
 
-
-        Optional<CustomerModel> customerModel = customerRepository.findById(25);
+        Optional<CustomerModel> customerModel = customerRepository.findById(24);
         CustomerModel customerModel1 = customerModel.get();
 
 
 
         orderModel.setCustomerModel(customerModel1);
         orderModel.setItemOrder(itemNoteModelsList);
+        orderModel.setItemNoteModel(itemNoteModel);
 
 
         orderRepository.save(orderModel);

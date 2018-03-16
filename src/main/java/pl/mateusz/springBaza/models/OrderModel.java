@@ -29,6 +29,10 @@ public class OrderModel {
     @OneToMany
     List<ItemNoteModel> itemOrder = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "Item_Note_Id")
+    private ItemNoteModel itemNoteModel;
+
 
   /*  public void addItemOrder(ItemNoteModel itemNoteModel){
         itemOrder.add(itemNoteModel);
