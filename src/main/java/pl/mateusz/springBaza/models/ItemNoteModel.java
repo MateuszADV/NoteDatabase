@@ -3,6 +3,7 @@ package pl.mateusz.springBaza.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Table(name = "item_note")
 public class ItemNoteModel {
 
@@ -18,15 +20,13 @@ public class ItemNoteModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String country;
-    private String cod;
-    private String curency;
-    private String quality;
-    private int quantity;
-    private String descryption;
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "note_id")
+    private NoteModel noteModel;
+
     private Double priceSell;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "order_id")
     private OrderModel orderModel;
 

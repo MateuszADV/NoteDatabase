@@ -12,12 +12,6 @@ public class ItemNoteModelDto {
 
     private Long id;
 
-    private String country;
-    private String cod;
-    private String curency;
-    private String quality;
-    private int quantity;
-    private String descryption;
     private Double priceSell;
     private OrderModel orderModel;
 }

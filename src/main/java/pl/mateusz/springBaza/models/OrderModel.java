@@ -3,6 +3,7 @@ package pl.mateusz.springBaza.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Table(name = "order_customer")
 public class OrderModel {
 
@@ -27,15 +29,8 @@ public class OrderModel {
     private CustomerModel customerModel;
 
     @OneToMany
+    @JoinColumn
     List<ItemNoteModel> itemOrder = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "Item_Note_Id")
-    private ItemNoteModel itemNoteModel;
 
-
-  /*  public void addItemOrder(ItemNoteModel itemNoteModel){
-        itemOrder.add(itemNoteModel);
-        itemNoteModel.setOrderModel(this);
-    }*/
 }
