@@ -39,7 +39,7 @@ public class OrderController {
     public String getOrder(ModelMap modelMap){
 
         List<OrderModel> orderModel = orderRepository.findAll();
-        List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(100);
+        List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(173);
 
         modelMap.addAttribute("orders",orderModel);
 
@@ -58,13 +58,16 @@ public class OrderController {
 
             Optional<CustomerModel> customerModel = customerRepository.findById(Integer.valueOf(customerId));
 
-            orderModel.setCustomerModel(customerModel.get());
+            if(customerModel.isPresent()) {
+                orderModel.setCustomerModel(customerModel.get());
+                orderRepository.save(orderModel);
 
-            orderRepository.save(orderModel);
-
-            customerID = customerId;
-            modelMap.addAttribute("order", orderModel);
-            return "redirect:/addorder";
+                customerID = customerId;
+                modelMap.addAttribute("order", orderModel);
+                return "redirect:/addorder";
+            }else {
+                return "redirect:/customer";
+            }
         }
         return "redirect:/order";
     }
@@ -95,8 +98,14 @@ public class OrderController {
         if(customerID!="") {
             modelMap.addAttribute("order", orderModel);
             Optional<NoteModel> noteModel = noteRepository.findById(Integer.valueOf(noteId));
+
+            Optional<OrderModel> orderModel2 = orderRepository.findById(orderModel.getId());
+
+            itemNoteModel.setOrderModel(orderModel2.get());
             itemNoteModel.setNoteModel(noteModel.get());
+            itemNoteModel.setPriceSell(noteModel.get().getPriceSell());
             itemNoteModels.add(itemNoteModel);
+            itemNoteRepository.save(itemNoteModel);
 
             suma+=noteModel.get().getPriceSell();
             modelMap.addAttribute("suma",suma);
@@ -107,4 +116,29 @@ public class OrderController {
 
         return "addorder";
     }
+
+    @GetMapping("/ordercustomer")
+    public String getOrderCustomer(ModelMap modelMap){
+
+        modelMap.addAttribute("pusty","pusty");
+
+        return "ordercustomer";
+    }
+
+    @PostMapping("/ordercustomer")
+    public String postOrderCustomer(@RequestParam String customerId, ModelMap modelMap){
+
+
+
+        List<OrderModel> orderModelList = orderRepository.findByCustomerModel_Id(Integer.valueOf(customerId));
+
+        if(!orderModelList.isEmpty()) {
+            modelMap.addAttribute("orders", orderModelList);
+        }else{
+            modelMap.addAttribute("customer", "Bark zamówień dla danego klienta, lib podane ID jest niepoprawne");
+            modelMap.addAttribute("pusty","pusty");
+        }
+        return "ordercustomer";
+    }
+
 }
