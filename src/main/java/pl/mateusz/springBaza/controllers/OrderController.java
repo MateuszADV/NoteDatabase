@@ -49,11 +49,14 @@ public class OrderController {
     }
 
     private String customerID = "";
+    private List<ItemNoteModel> itemNoteModels = new ArrayList<>();
+    private OrderModel orderModel;
 
-    private OrderModel orderModel = new OrderModel();
     @PostMapping("/order")
     public String PostOrder(@RequestParam String customerId, ModelMap modelMap){
 
+        orderModel = new OrderModel();
+        itemNoteModels.clear();
         if(customerId!="") {
 
             Optional<CustomerModel> customerModel = customerRepository.findById(Integer.valueOf(customerId));
@@ -87,7 +90,7 @@ public class OrderController {
     }
 
 
-    private List<ItemNoteModel> itemNoteModels = new ArrayList<>();
+
     private Double suma=0.0;
     @PostMapping("/addorder")
     public String postAddOrder(@RequestParam String noteId, ModelMap modelMap){
