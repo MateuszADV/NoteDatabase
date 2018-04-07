@@ -39,7 +39,7 @@ public class OrderController {
     public String getOrder(ModelMap modelMap){
 
         List<OrderModel> orderModel = orderRepository.findAll();
-        List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(173);
+        List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(184);
 
         modelMap.addAttribute("orders",orderModel);
 
@@ -54,6 +54,15 @@ public class OrderController {
 
     @PostMapping("/order")
     public String PostOrder(@RequestParam String customerId, ModelMap modelMap){
+
+        try {
+            Integer.parseInt(customerId);
+        }catch (Exception e){
+            modelMap.addAttribute("customer", "Podane ID Klienata("+customerId+") jest niepoprawne");
+            modelMap.addAttribute("pusty","pusty");
+
+            return "order";
+        }
 
         orderModel = new OrderModel();
         itemNoteModels.clear();
@@ -89,12 +98,9 @@ public class OrderController {
 
     }
 
-
-
     private Double suma=0.0;
     @PostMapping("/addorder")
     public String postAddOrder(@RequestParam String noteId, ModelMap modelMap){
-
 
         ItemNoteModel itemNoteModel = new ItemNoteModel();
 
@@ -131,14 +137,21 @@ public class OrderController {
     @PostMapping("/ordercustomer")
     public String postOrderCustomer(@RequestParam String customerId, ModelMap modelMap){
 
+        try {
+            Integer.parseInt(customerId);
+        }catch (Exception e){
+            modelMap.addAttribute("customer", "Bark zamówień dla danego klienta, lub podane ID("+customerId+") jest niepoprawne");
+            modelMap.addAttribute("pusty","pusty");
 
+            return "ordercustomer";
+        }
 
         List<OrderModel> orderModelList = orderRepository.findByCustomerModel_Id(Integer.valueOf(customerId));
 
         if(!orderModelList.isEmpty()) {
             modelMap.addAttribute("orders", orderModelList);
         }else{
-            modelMap.addAttribute("customer", "Bark zamówień dla danego klienta, lib podane ID jest niepoprawne");
+            modelMap.addAttribute("customer", "Bark zamówień dla danego klienta, lub podane ID("+customerId+") jest niepoprawne");
             modelMap.addAttribute("pusty","pusty");
         }
         return "ordercustomer";

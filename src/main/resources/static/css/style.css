@@ -14,7 +14,7 @@ body
 
 .heder
 {
-    height: 100px;
+    height: 10%;
     background-color:black;
     color:white;
     padding:15px;
@@ -32,7 +32,7 @@ body
     float: left;
     width: 74%;
     text-align: center;
-    border-right: 1px solid white;
+    /*border-right: 1px solid white;*/
 }
 
 .obrazek
@@ -75,7 +75,7 @@ ul{
 {
     clear:both;
     padding:40px;
-    background-color:#D9D7D7
+    /*background-color:#D9D7D7*/
 }
 .footer
 {

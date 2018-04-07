@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Show Customer</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
     <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
     <link rel="stylesheet" th:href="@{css/showNote.css}" type="text/css" />
@@ -20,34 +23,10 @@
         </div>
         <div style="clear:both"></div>
     </div>
-            <h1 style="color: #53d79e; padding: 20px">Klienci</h1>
+            <h1 style="padding: 20px; text-align: center">Klienci</h1>
 
             <div id="viewTable" style="min-height: 620px">
-               <!-- <div id="operacje">
-                    <center>
-                    <div id="search">
-                        <a href="note.html">Dodaj nowy banknot </a>
-
-                        <form th:action="@{/shownote}" method="post" >
-                            <a>Szukaj Państwo</a><br/>
-                            <a><input type="text" th:name="country" placeholder="country"></a><br/>
-                            <a>Podaj Id rekordu który chcesz usunąć </a><br/>
-                            <a><input type="text" th:name="deleteId" placeholder="Id"></a><br/>
-                            <p><input type="submit" value="Szukaj/usuń"></p>
-                        </form>
-                    </div>
-                    <div id="delete">
-                        <p><h1>Informacje</h1></p>
-                        <p th:text="${idId}"></p>
-                        <p th:text="${country}+' - wyszukanych elementów: '+${countCountry}"></p>
-                        <p th:text="${brak}"></p>
-
-                    </div>
-                    </center>
-                    <div style="clear: both"></div>
-                </div>-->
-
-                <table id="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+                <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
                     <tr id="wiersz">
                         <th>Id</th>
                         <th>Numer Klienta</th>
@@ -86,9 +65,11 @@
         <h1>STOPKA</h1>
 
     </div>
-
-
-
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

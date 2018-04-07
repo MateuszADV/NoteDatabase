@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<div>
+<div class="container">
     <div class="heder">
         <div class="logoObraek">
             <span>
@@ -24,6 +24,30 @@
         </div>
         <div style="clear:both"></div>
     </div>
+
+    <div class="menu">
+        <div><h1>MENU</h1></div>
+        <nav>
+            <ul class="menu1">
+                <li>
+                    <p><a href="/">HOME</a></p>
+                </li>
+                <li>
+                    <p><a href="customer">KLIENCI</a></p>
+                </li>
+                <li>
+                    <p><a href="note">BANKNOTY</a></p>
+                </li>
+                <li>
+                    <p><a href="#">ZAMÓWIENIA</a></p>
+                </li>
+                <li>
+                    <p><a href="ordercustomer">Szukaj zamówienia</a></p>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
 
     <div class="content">
         <h1 style="color: #53d79e; padding: 20px; text-align: center">Zamówienie</h1>
@@ -37,28 +61,31 @@
                 </form>
             </div>
 
+            <span th:text="${customer}" style="color: red"></span>
 
-        <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
-            <tr>
-                <td>Id Zamówienia</td>
-                <td>Data zamówienia </td>
-                <td>Id Klienta</td>
-                <td>Imię</td>
-                <td>Nazwisko</td>
+            <div th:if="${pusty}!='pusty'">
+                <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+                    <tr>
+                        <td>Id Zamówienia</td>
+                        <td>Data zamówienia </td>
+                        <td>Id Klienta</td>
+                        <td>Imię</td>
+                        <td>Nazwisko</td>
 
-            </tr>
-        <div th:block th:each="order : ${orders}">
-            <tr>
-                <td th:text="${order.id}"></td>
-                <td th:text="${order.added}"></td>
-                <td th:text="${order.customerModel.id}"></td>
-                <td th:text="${order.customerModel.name}"></td>
-                <td th:text="${order.customerModel.lastname}"></td>
+                    </tr>
+                <div th:block th:each="order : ${orders}">
+                    <tr>
+                        <td th:text="${order.id}"></td>
+                        <td th:text="${order.added}"></td>
+                        <td th:text="${order.customerModel.id}"></td>
+                        <td th:text="${order.customerModel.name}"></td>
+                        <td th:text="${order.customerModel.lastname}"></td>
 
-            </tr>
+                    </tr>
 
-        </div>
-        </table>
+                </div>
+                </table>
+            </div>
         </div>
         <div>
             <h2>Tabela zamówionych banknotów</h2>
@@ -95,8 +122,6 @@
         <h1 th:text="#{footer}"></h1>
 
     </div>
-
-
 
 </div>
 
