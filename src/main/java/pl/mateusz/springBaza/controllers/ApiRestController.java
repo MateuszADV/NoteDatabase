@@ -134,7 +134,6 @@ public class ApiRestController {
 
         orderModel2Dto.setItemOrder(itemNoteModelDtos);
 
-
         return ResponseEntity.ok().body(orderModel2Dto);
     }
 

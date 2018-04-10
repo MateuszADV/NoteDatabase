@@ -40,7 +40,7 @@ public class RestControler {
         return new ResponseEntity(noteRepository.findByCountry(someCountry), HttpStatus.OK);
     }
 
-    @GetMapping("/api/country/")
+    @GetMapping("/api/country")
     public ResponseEntity<List<NoteDto>> getNote(){
         List<NoteModel> noteModelList = noteRepository.findAllBy();
 
