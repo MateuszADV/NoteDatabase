@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.mateusz.springBaza.models.CustomerModel;
@@ -155,6 +156,25 @@ public class OrderController {
             modelMap.addAttribute("pusty","pusty");
         }
         return "ordercustomer";
+    }
+
+    @GetMapping("/showdetailorder_{orderID}")
+    public String shoeDetailOrderGer(@PathVariable long orderID, ModelMap modelMap){
+            List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(orderID);
+            int idcus=itemNoteModel.get(0).getOrderModel().getCustomerModel().getId();
+            Optional<CustomerModel> customerModel = customerRepository.findById(idcus);
+
+            double sum=0.0;
+        for (ItemNoteModel noteModel : itemNoteModel) {
+            sum+=noteModel.getPriceSell();
+        }
+
+            CustomerModel customerModel2 = customerModel.get();
+
+            modelMap.addAttribute("customer",customerModel2);
+            modelMap.addAttribute("itemOrder", itemNoteModel);
+            modelMap.addAttribute("sum",sum);
+        return "showdetailorder";
     }
 
 }

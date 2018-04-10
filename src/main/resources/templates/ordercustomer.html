@@ -70,6 +70,7 @@
                         <td>Id Klienta</td>
                         <td>Imię</td>
                         <td>Nazwisko</td>
+                        <td>Info</td>
 
                     </tr>
                 <div th:block th:each="order : ${orders}">
@@ -79,8 +80,9 @@
                         <td th:text="${order.customerModel.id}"></td>
                         <td th:text="${order.customerModel.name}"></td>
                         <td th:text="${order.customerModel.lastname}"></td>
-
+                        <td ><a th:href="@{'/showdetailorder'+'_'+${order.id}}">szczególy zamówienia</a></td>
                     </tr>
+
 
                 </div>
                 </table>
