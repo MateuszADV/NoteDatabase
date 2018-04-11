@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Order</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/showNote.css}" type="text/css" />
+
+</head>
+<body>
+<div class="container">
+    <div class="heder">
+        <div class="logoObraek">
+            <span>
+            <img class="obrazek" th:src="#{logo}"/>
+            </span>
+        </div>
+        <div class="logoNapis">
+            <p></p><h1 th:text="#{heder}"></h1></p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+    <div class="menu">
+        <div><h1>MENU</h1></div>
+        <nav>
+            <ul class="menu1">
+                <li>
+                    <p><a href="/">HOME</a></p>
+                </li>
+                <li>
+                    <p><a href="customer">KLIENCI</a></p>
+                </li>
+                <li>
+                    <p><a href="note">BANKNOTY</a></p>
+                </li>
+                <li>
+                    <p><a href="#">ZAMÓWIENIA</a></p>
+                </li>
+                <li>
+                    <p><a href="ordercustomer">Szukaj zamówienia</a></p>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="content">
+
+        <div>
+            <h2>Tabela zamówionych banknotów</h2>
+
+            <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+                <tr>
+                    <th>Id</th>
+                    <th>Numer Klienta</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Miejscowość</th>
+                    <th>Ulica</th>
+
+                </tr>
+                <tr>
+                    <td th:text="${customer.id}"></td>
+                    <td th:text="${customer.numberCustomer}"></td>
+                    <td th:text="${customer.name}"></td>
+                    <td th:text="${customer.lastname}"></td>
+                    <td th:text="${customer.city}"></td>
+                    <td th:text="${customer.street}"></td>
+                </tr>
+            </table>
+            <p>---------------------------------------------------------------------------------------</p>
+            <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+                <tr>
+                    <th>Id zamówienia</th>
+                    <th>Id</th>
+                    <th>Id Banknotu</th>
+                    <th>Kraj</th>
+                    <th>Kod</th>
+                    <th>Waluta</th>
+                    <th>Nominał</th>
+                    <th>Cena</th>
+                </tr>
+                <div th:block th:each="item : ${itemOrder}">
+                    <tr>
+                        <td th:text="${item.orderModel.id}"></td>
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.noteModel.id}"></td>
+                        <td th:text="${item.noteModel.country}"></td>
+                        <td th:text="${item.noteModel.cod}"></td>
+                        <td th:text="${item.noteModel.currency}"></td>
+                        <td th:text="${item.noteModel.denomination}"></td>
+                        <td th:text="${item.priceSell}+'zł'"></td>
+                    </tr>
+                </div>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>suma</td>
+                    <td th:text="${sum}+'zł'"></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h1 th:text="#{footer}"></h1>
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
