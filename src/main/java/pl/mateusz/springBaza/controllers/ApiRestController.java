@@ -89,6 +89,7 @@ public class ApiRestController {
 
     @GetMapping("api/order/{orderId}")
     public ResponseEntity<OrderModelDto> orderList(@PathVariable Long orderId){
+
         Optional<OrderModel> orderModel = orderRepository.findById(orderId);
 
         List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(orderId);
@@ -98,10 +99,10 @@ public class ApiRestController {
             itemNoteModelDtos.add((new ModelMapper().map(itemNoteModel, ItemNoteModelDto.class)));
         }
 
-        OrderModel orderModel1 = orderModel.get();
+       // OrderModel orderModel1 = orderModel.get();
 
         OrderModelDto orderModelDto = new OrderModelDto();
-        orderModelDto = (new ModelMapper().map(orderModel1, OrderModelDto.class));
+        orderModelDto = (new ModelMapper().map(orderModel.get(), OrderModelDto.class));
 
         orderModelDto.setItemOrder(itemNoteModel);
 

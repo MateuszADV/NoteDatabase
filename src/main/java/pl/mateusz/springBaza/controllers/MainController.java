@@ -8,7 +8,7 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String indexGet(){
-        return "index";
+        return "/index";
     }
 
 

@@ -3,11 +3,14 @@ package pl.mateusz.springBaza.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import pl.mateusz.springBaza.models.dtos.NoteCountriesDto;
 import pl.mateusz.springBaza.models.forms.NoteForm;
 import pl.mateusz.springBaza.models.NoteModel;
 import pl.mateusz.springBaza.models.repositories.NoteRepository;
@@ -16,6 +19,8 @@ import pl.mateusz.springBaza.utils.UtilNote;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Controller
 public class NoteController {
@@ -71,4 +76,29 @@ public class NoteController {
         }
     }
 
+    @GetMapping("/countries")
+    public String countriesGet(ModelMap modelMap){
+
+        Iterable<NoteModel> listCountry = noteRepository.findAll();
+        Set<String> countries = new TreeSet<>();
+
+        for (NoteModel noteModel : listCountry) {
+            countries.add(noteModel.getCountry());
+        }
+
+        modelMap.addAttribute("countries", countries);
+        return "countries";
+    }
+
+
+    @GetMapping("/countriesdetail_{country}")
+    public String countriesDetailGet(@PathVariable String country, ModelMap modelMap){
+
+        List<NoteModel> lista = noteRepository.findByCountry(country);
+
+        modelMap.addAttribute("lista",lista);
+        modelMap.addAttribute("country", lista.get(0).getCountry());
+
+        return "countriesdetail";
+    }
 }

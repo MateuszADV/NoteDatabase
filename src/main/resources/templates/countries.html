@@ -2,14 +2,11 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Order</title>
+    <title>Państwa</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
     <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{css/showNote.css}" type="text/css" />
-
 </head>
 <body>
 <div class="container">
@@ -42,52 +39,24 @@
                     <p><a href="order">ZAMÓWIENIA</a></p>
                 </li>
                 <li>
-                    <p><a href="ordercustomer">Szukaj zamówienia</a></p>
+                    <p><a href="/ordercustomer">Szukaj zamówienia</a></p>
                 </li>
             </ul>
         </nav>
     </div>
 
     <div class="content">
-        <span><h1 style="color: #53d79e; padding: 20px; text-align: center">Zamówienie Klienta</h1></span>
-
         <div>
-            <div style="text-align: center">
-                <h3>Wyszukaj zamówienia klienta</h3>
-                <form th:action="@{/ordercustomer}" method="post">
-                    <p>Poadj Id Klienta <input type="text" th:name="customerId"></p>
-                    <p><input type="submit" value="Wyswietl"></p>
-                </form>
-            </div>
-
-
-            <span th:text="${customer}" style="color: red"></span>
-            <div th:if="${pusty}!='pusty'">
-                <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
-                    <tr>
-                        <td>Id Zamówienia</td>
-                        <td>Data zamówienia </td>
-                        <td>Id Klienta</td>
-                        <td>Imię</td>
-                        <td>Nazwisko</td>
-                        <td>Info</td>
-
+            <table  class="tabela" cellpadding="20" cellspacing="10" align="center">
+                <block th:each="state,i : ${countries}">
+                    <!--<td th:text="${state}"></td>-->
+                    <td><a th:href="@{'/countriesdetail'+'_'+${state}}"><span th:text="${state}"></span></a></td>
+                    <tr th:if="${i.count}%4==0">
                     </tr>
-                <div th:block th:each="order : ${orderListCustomer}">
-                    <tr>
-                        <td th:text="${order.id}"></td>
-                        <td th:text="${order.added}"></td>
-                        <td th:text="${order.customerModel.id}"></td>
-                        <td th:text="${order.customerModel.name}"></td>
-                        <td th:text="${order.customerModel.lastname}"></td>
-                        <td ><a th:href="@{'/showdetailorder'+'_'+${order.id}}">szczególy zamówienia</a></td>
-                    </tr>
+                </block>
 
-
-                </div>
-                </table>
-            </div></div>
-
+            </table>
+        </div>
     </div>
 
     <div class="footer">
@@ -95,12 +64,11 @@
 
     </div>
 
-
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

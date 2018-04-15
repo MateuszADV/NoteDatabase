@@ -52,7 +52,7 @@
     <div class="content">
 
         <div>
-            <h2 th:text="'Sza\czegóły zaówienia o ID '+${customer.id}"></h2>
+            <h2 th:text="'Szczegóły zamówienia nr: '+${numberOrdesr}" style="text-align: center"></h2>
 
             <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
                 <tr>
@@ -76,7 +76,7 @@
             <p>---------------------------------------------------------------------------------------</p>
             <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
                 <tr>
-                    <th>Id zamówienia</th>
+                    <!--<th>Id zamówienia</th>-->
                     <th>Id</th>
                     <th>Id Banknotu</th>
                     <th>Kraj</th>
@@ -87,7 +87,7 @@
                 </tr>
                 <div th:block th:each="item : ${itemOrder}">
                     <tr>
-                        <td th:text="${item.orderModel.id}"></td>
+                        <!--<td th:text="${item.orderModel.id}"></td>-->
                         <td th:text="${item.id}"></td>
                         <td th:text="${item.noteModel.id}"></td>
                         <td th:text="${item.noteModel.country}"></td>
@@ -98,14 +98,9 @@
                     </tr>
                 </div>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="5" style="border-left: none"></td>
                     <td>suma</td>
-                    <td th:text="${sum}+'zł'"></td>
+                    <td th:text="${amountToPay}+'zł'"></td>
                 </tr>
             </table>
         </div>

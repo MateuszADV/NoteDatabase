@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Banknoty szczegóły</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/showNote.css}" type="text/css" />
+
+</head>
+<body>
+<div>
+    <div class="heder">
+        <div class="logoObraek">
+            <span>
+            <img class="obrazek" th:src="#{logo}"/>
+            </span>
+        </div>
+        <div class="logoNapis">
+            <p></p><h1 th:text="#{heder}"></h1></p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <h1 style="color: #000000; padding: 20px; text-align: center">Tabela z banknotami</h1>
+
+    <h2 th:text="${country}" style="text-align: center"></h2>
+    <div class="viewTable">
+        </center>
+        <table class="tabela"  border="1" cellpadding="3" cellspacing="0" align="center">
+            <tr id="wiersz">
+                <th>Id</th>
+                <th>Numerw katalogu</th>
+                <th>Państwo</th>
+                <th>KOD</th>
+                <th>Waluta</th>
+                <th>Nominał</th>
+                <th>Data</th>
+                <th>Kupno</th>
+                <th>Sprzeaż</th>
+                <th>Ilość</th>
+                <th>Stan banknotu</th>
+                <th>Opis</th>
+                <th>Avers</th>
+                <th>Revers</th>
+            </tr>
+            <th:block th:each="note : ${lista}">
+                <tr>
+                    <td th:text="${note.id}"></td>
+                    <td th:text="${note.numberCatalog}"></td>
+                    <td th:text="${note.country}"></td>
+                    <td th:text="${note.cod}"></td>
+                    <td th:text="${note.currency}"></td>
+                    <td th:text="${note.denomination}"></td>
+                    <td th:text="${note.dataNote}"></td>
+                    <td th:text="${note.priceBuy}+'zł'"></td>
+                    <td th:text="${note.priceSell}+'zł'"></td>
+                    <td th:text="${note.quantity} "></td>
+                    <td th:text="${note.quality}"></td>
+                    <td th:text="${note.notes}"></td>
+                    <td style="width: 150px" ><a data-toggle="lightbox" th:href="${note.PathNoteSizeA}"><img class="note" th:src="${note.PathNoteSizeA}"/></a></td>
+                    <td style="width: 150px" ><a target="_blank" th:href="${note.PathNoteSizeB}"><img class="note" th:src="${note.PathNoteSizeB}"/></a></td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+    </CENTER>
+
+    <div class="footer">
+        <h1 th:text="#{footer}"></h1>
+
+    </div>
+
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

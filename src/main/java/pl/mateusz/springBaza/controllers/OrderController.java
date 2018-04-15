@@ -130,7 +130,9 @@ public class OrderController {
     @GetMapping("/ordercustomer")
     public String getOrderCustomer(ModelMap modelMap){
 
-        modelMap.addAttribute("pusty","pusty");
+        List<OrderModel> orderListCustomer = orderRepository.findAll();
+        modelMap.addAttribute("orderListCustomer",orderListCustomer);
+       // modelMap.addAttribute("pusty","pusty");
 
         return "ordercustomer";
     }
@@ -147,10 +149,10 @@ public class OrderController {
             return "ordercustomer";
         }
 
-        List<OrderModel> orderModelList = orderRepository.findByCustomerModel_Id(Integer.valueOf(customerId));
+        List<OrderModel> orderListCustomer = orderRepository.findByCustomerModel_Id(Integer.valueOf(customerId));
 
-        if(!orderModelList.isEmpty()) {
-            modelMap.addAttribute("orders", orderModelList);
+        if(!orderListCustomer.isEmpty()) {
+            modelMap.addAttribute("orderListCustomer", orderListCustomer);
         }else{
             modelMap.addAttribute("customer", "Bark zamówień dla danego klienta, lub podane ID("+customerId+") jest niepoprawne");
             modelMap.addAttribute("pusty","pusty");
@@ -161,19 +163,20 @@ public class OrderController {
     @GetMapping("/showdetailorder_{orderID}")
     public String shoeDetailOrderGer(@PathVariable long orderID, ModelMap modelMap){
             List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(orderID);
-            int idcus=itemNoteModel.get(0).getOrderModel().getCustomerModel().getId();
-            Optional<CustomerModel> customerModel = customerRepository.findById(idcus);
 
-            double sum=0.0;
+            int idCustomer=itemNoteModel.get(0).getOrderModel().getCustomerModel().getId();
+            Optional<CustomerModel> customerModel = customerRepository.findById(idCustomer);
+
+            double amountToPay=0.0;
         for (ItemNoteModel noteModel : itemNoteModel) {
-            sum+=noteModel.getPriceSell();
+            amountToPay+=noteModel.getPriceSell();
         }
 
-            CustomerModel customerModel2 = customerModel.get();
-
-            modelMap.addAttribute("customer",customerModel2);
+            modelMap.addAttribute("customer",customerModel.get());
             modelMap.addAttribute("itemOrder", itemNoteModel);
-            modelMap.addAttribute("sum",sum);
+            modelMap.addAttribute("amountToPay",amountToPay);
+            modelMap.addAttribute("numberOrdesr",itemNoteModel.get(0).getOrderModel().getId());
+
         return "showdetailorder";
     }
 
