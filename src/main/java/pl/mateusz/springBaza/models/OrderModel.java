@@ -33,4 +33,9 @@ public class OrderModel {
     List<ItemNoteModel> itemOrder = new ArrayList<>();
 
 
+    public OrderModel(Date added, CustomerModel customerModel, List<ItemNoteModel> itemOrder) {
+        this.added = added;
+        this.customerModel = customerModel;
+        this.itemOrder = itemOrder;
+    }
 }

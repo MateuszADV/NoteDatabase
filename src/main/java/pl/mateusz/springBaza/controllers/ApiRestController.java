@@ -99,7 +99,7 @@ public class ApiRestController {
             itemNoteModelDtos.add((new ModelMapper().map(itemNoteModel, ItemNoteModelDto.class)));
         }
 
-       // OrderModel orderModel1 = orderModel.get();
+
 
         OrderModelDto orderModelDto = new OrderModelDto();
         orderModelDto = (new ModelMapper().map(orderModel.get(), OrderModelDto.class));
