@@ -53,10 +53,10 @@ body
 {
      float:left;
      background-color:gray;
-     width:140px;
+     width:180px;
      min-height:660px;
      max-height: 2000px;
-     padding-right:20px;
+     padding:20px;
 }
 
 ul{
@@ -67,7 +67,7 @@ ul{
 {
      float:left;
      padding:20px;
-     width:560px;
+     width:520px;
      min-height:620px;
 }
 
@@ -87,12 +87,12 @@ ul{
      padding:5px;
 }
 
-.menu1 a
+.submenu a
 {
     color:white;
     text-decoration:none;
 }
-.menu1 a:hover
+.submenu a:hover
 {
     color:blue;
 
