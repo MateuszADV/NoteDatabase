@@ -25,29 +25,9 @@
         <div style="clear:both"></div>
     </div>
 
-    <div class="menu">
-        <div><h1>MENU</h1></div>
-        <nav>
-            <ul class="menu1">
-                <li>
-                    <p><a href="/">HOME</a></p>
-                </li>
-                <li>
-                    <p><a href="customer">KLIENCI</a></p>
-                </li>
-                <li>
-                    <p><a href="note">BANKNOTY</a></p>
-                </li>
-                <li>
-                    <p><a href="order">ZAMÓWIENIA</a></p>
-                </li>
-                <li>
-                    <p><a href="ordercustomer">Szukaj zamówienia</a></p>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <div th:insert="~{includes/menu :: menu}">
 
+    </div>
     <div class="content">
         <span><h1 style="color: #53d79e; padding: 20px; text-align: center">Zamówienie Klienta</h1></span>
 
