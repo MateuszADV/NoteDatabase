@@ -49,7 +49,13 @@
             <table  class="tabela" cellpadding="20" cellspacing="10" align="center">
                 <block th:each="state,i : ${countries}">
                     <!--<td th:text="${state}"></td>-->
-                    <td><a th:href="@{'/countriesdetail'+'_'+${state}}"><span th:text="${state}"></span></a></td>
+                    <td>
+                        <a th:href="@{'/countriesdetail'+'_'+${state}}" >
+                            <img class="flag" th:src="'/images/flags/'+${state}+'.png'">
+                            <span th:text="${state}"></span>
+
+
+                        </a></td>
                     <tr th:if="${i.count}%4==0">
                     </tr>
                 </block>
