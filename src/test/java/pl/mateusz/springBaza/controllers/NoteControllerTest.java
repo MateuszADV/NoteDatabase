@@ -41,8 +41,8 @@ public class NoteControllerTest {
 
         Mockito.when(noteRepository.findAll())
                 .thenReturn(lists);
-        mockMvc.perform(MockMvcRequestBuilders.get("/rest/shownote"))
-        //mockMvc.perform(MockMvcRequestBuilders.get("/api/country"))
+        //mockMvc.perform(MockMvcRequestBuilders.get("/rest/shownote"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/country"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 //.andExpect(MockMvcResultMatchers.content().json("[{\"id\":null,\"numberCatalog\":\"PLN/2018/01/04/0001\",\"country\":\"Polska\",\"cod\":\"PLN\",\"currency\":\"Złoty\",\"denomination\":10.0,\"dataNote\":\"2012\",\"priceBuy\":10.0,\"priceSell\":12.5,\"quantity\":1,\"quality\":\"UNC\",\"notes\":\"Opis banknotu\",\"pathNoteSizeA\":null,\"pathNoteSizeB\":null}]"))

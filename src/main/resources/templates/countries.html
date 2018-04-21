@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
 </head>
 <body>
 <div class="container">
@@ -32,7 +32,7 @@
                 <block th:each="state,i : ${countries}">
                     <!--<td th:text="${state}"></td>-->
                     <td>
-                        <a th:href="@{'/countriesdetail'+'_'+${state}}" >
+                        <a th:href="@{'/countriesdetail/'+${state}}" >
                             <p><img class="flag" th:src="'/images/flags/'+${state}+'.png'"></p>
                             <span th:text="${state}"></span>
 

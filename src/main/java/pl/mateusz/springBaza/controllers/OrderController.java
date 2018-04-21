@@ -160,7 +160,7 @@ public class OrderController {
         return "ordercustomer";
     }
 
-    @GetMapping("/showdetailorder_{orderID}")
+    @GetMapping("/showdetailorder/{orderID}")
     public String shoeDetailOrderGer(@PathVariable long orderID, ModelMap modelMap){
             List<ItemNoteModel> itemNoteModel = itemNoteRepository.findAllByOrderModelId(orderID);
 

@@ -16,6 +16,7 @@ import pl.mateusz.springBaza.models.repositories.NoteRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class RestControler {
@@ -42,6 +43,8 @@ public class RestControler {
 
     @GetMapping("/api/country")
     public ResponseEntity<List<NoteDto>> getNote(){
+            //jak znienić to na listę
+        //List<NoteModel> noteModelList = StreamSupport.stream(noteRepository.findAll().spliterator());
         List<NoteModel> noteModelList = noteRepository.findAllBy();
 
         List<NoteDto> noteDtoList = new ArrayList<>();

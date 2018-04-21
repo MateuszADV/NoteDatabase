@@ -6,9 +6,9 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" th:href="@{css/styleNote.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css" />
-    <link rel="stylesheet" th:href="@{css/showNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/styleNote.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/showNote.css}" type="text/css" />
 
 </head>
 <body>
@@ -60,8 +60,8 @@
                     <td th:text="${note.quantity} "></td>
                     <td th:text="${note.quality}"></td>
                     <td th:text="${note.notes}"></td>
-                    <td style="width: 150px" ><a data-toggle="lightbox" th:href="${note.PathNoteSizeA}"><img class="note" th:src="${note.PathNoteSizeA}"/></a></td>
-                    <td style="width: 150px" ><a target="_blank" th:href="${note.PathNoteSizeB}"><img class="note" th:src="${note.PathNoteSizeB}"/></a></td>
+                    <td style="width: 150px" ><a data-toggle="lightbox" th:href="'/'+${note.PathNoteSizeA}"><img class="note" th:src="'/'+${note.PathNoteSizeA}"/></a></td>
+                    <td style="width: 150px" ><a target="_blank" th:href="'/'+${note.PathNoteSizeB}"><img class="note" th:src="'/'+${note.PathNoteSizeB}"/></a></td>
                 </tr>
             </th:block>
         </table>

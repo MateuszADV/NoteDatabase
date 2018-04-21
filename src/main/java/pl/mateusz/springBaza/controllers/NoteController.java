@@ -91,7 +91,7 @@ public class NoteController {
     }
 
 
-    @GetMapping("/countriesdetail_{country}")
+    @GetMapping("/countriesdetail/{country}")
     public String countriesDetailGet(@PathVariable String country, ModelMap modelMap){
 
         List<NoteModel> lista = noteRepository.findByCountry(country);
