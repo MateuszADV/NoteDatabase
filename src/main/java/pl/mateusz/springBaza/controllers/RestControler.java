@@ -43,7 +43,7 @@ public class RestControler {
 
     @GetMapping("/api/country")
     public ResponseEntity<List<NoteDto>> getNote(){
-            //jak znienić to na listę popatrę
+            //jak znienić to na listę
         //List<NoteModel> noteModelList = StreamSupport.stream(noteRepository.findAll().spliterator());
         List<NoteModel> noteModelList = noteRepository.findAllBy();
 
